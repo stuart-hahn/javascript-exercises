@@ -1,18 +1,21 @@
 const fibonacci = function(end) {
-    let fib = [1, 1]
-    if (end < 0) {
+    end = Number(end)
+    if (end < 0 || !Number.isInteger(end)) {
         return "OOPS"
     }
-    if (end == 0) {
+    if (end === 0) {
         return 0
     }
-    if (end == 1 || end == 2) {
+    if (end === 1 || end === 2) {
         return 1
     }
-    for (let i = 2; i < end; i++) {
-        fib.push(fib[fib.length - 1] + fib[fib.length - 2])
+
+    let a = 1, b = 1
+    for (let i = 3; i <= end; i++) {
+        [a, b] = [b, a + b]
     }
-    return fib[fib.length - 1]
+
+    return b
 };
 
 // Do not edit below this line
